@@ -1,0 +1,41 @@
+#cloud-config
+hostname: ${hostname}
+manage_etc_hosts: true
+chpasswd:
+  expire: False
+
+users:
+  - default
+  - name: owlit
+    groups:
+      - users
+      - sudo
+    ssh_authorized_keys:
+      - ssh-ed25519 
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+  - name: ahuck
+    groups:
+      - users
+      - sudo
+    ssh_authorized_keys:
+      - ssh-rsa 
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+  - name: lostmann
+    groups:
+      - users
+      - sudo
+    ssh_authorized_keys:
+      - ssh-rsa 
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
+  - name: padelt
+    groups:
+      - users
+      - sudo
+    ssh_authorized_keys:
+      - ssh-rsa 
+      - ssh-rsa 
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
